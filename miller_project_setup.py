@@ -64,17 +64,26 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
 # Pass in a list of folder names 
 #####################################
 
-def create_folders_from_list(folder_list: list) -> None:
+def create_folders_from_list(folder_list: list, to_lowercase: bool, remove_spaces: bool) -> None:
     '''
     Create folders from a list of names.
     
     Arguments:
     folder_list -- A list of folder names to create.
+    to_lowercase -- A boolean flag to convert names to lowercase.
+    remove_spaces -- A boolean flag to remove spaces from names.
     '''
 
-    print(f"FUNCTION CALLED: create_folders_from_list with folder_list={folder_list}")
+    print(f"FUNCTION CALLED: create_folders_from_list with folder_list={folder_list}, to_lowercase={to_lowercase}, and remove_spaces={remove_spaces}")
 
     for name in folder_list:
+        # Convert the name to lowercase if the flag is set
+        if to_lowercase:
+            name = name.lower()
+        #Remove spaces from the name if the flag is set
+        if remove_spaces:
+            name = name.replace(" ", "")
+
         # Create a folder path for the name
         name_path = data_path.joinpath(name)
 
@@ -160,7 +169,7 @@ def main() -> None:
 
     # Call function 2 to create folders given a list
     folder_names = ['data-csv', 'data-excel', 'data-json']
-    create_folders_from_list(folder_names)
+    create_folders_from_list(folder_names,to_lowercase=False, remove_spaces=False)
 
     # Call function 3 to create folders using comprehension
     folder_names = ['csv', 'excel', 'json']
@@ -171,8 +180,7 @@ def main() -> None:
     duration_secs:int = 5  # duration in seconds
     create_folders_periodically(duration_secs)
 
-    # TODO: Add options e.g., to force lowercase and remove spaces 
-    # to one or more of your functions (e.g. function 2) 
+
     # Call your function and test these options
     regions = [
       "North America", 
@@ -183,8 +191,7 @@ def main() -> None:
       "Oceania", 
       "Middle East"
     ]
-    # Uncomment this line after you've added your custom logic
-    # create_folders_from_list(regions, to_lowercase=True, remove_spaces=True)
+    create_folders_from_list(regions, to_lowercase=True, remove_spaces=True)
 
     # End of main execution
     print("\n#####################################")
@@ -198,5 +205,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
-#TODO: Run this as a script to test that all functions work as intended.
