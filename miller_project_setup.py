@@ -56,6 +56,7 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
 
         # Create the year folder if it doesn't exist, otherwise do nothing
         year_path.mkdir(exist_ok=True)
+        print(f"Folder created: {year_path}")
 
   
 #####################################
@@ -88,6 +89,7 @@ def create_folders_from_list(folder_list: list, to_lowercase: bool, remove_space
 
         # Create the name folder if it doesn't exist, otherwise do nothing
         name_path.mkdir(exist_ok=True)
+        print(f"Folder created: {name_path}")
 
 
   
@@ -113,6 +115,7 @@ def create_prefixed_folders(folder_list: list, prefix: str) -> None:
 
         # Create the name folder if it doesn't exist, otherwise do nothing
         name_path.mkdir(exist_ok=True)
+        print(f"Folder created: {name_path}")
 
   
 
@@ -139,6 +142,7 @@ def create_folders_periodically(duration_seconds: int) -> None:
 
         # Create the folder if it doesn't exist, otherwise do nothing
         folder_path.mkdir(exist_ok=True)
+        print(f"Folder created: {folder_path}")
 
         # Decrement the folder number
         folder_num -= 1
